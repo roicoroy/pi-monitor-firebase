@@ -2,6 +2,31 @@
 
 This project is meant to record some statistics about your raspberry pi (with some type of linux running) in a [Firebase](https://firebase.google.com/) database. You can use this to keep track of information like temperature, disk usage, IP address, and more.
 
+Here is the current data stored:
+```
+{
+    "disk": {
+        "free": "2.0",
+        "total": "15.0",
+        "used": "12.0"
+    },
+    "ip": "192.168.1.10",
+    "lastUpdateTime": "2017-02-07 19:30:01",
+    "networkName": "raspberrypi",
+    "os": {
+        "platform": "Linux-4.4.13-v7+-armv7l-with-debian-8.0",
+        "release": "4.4.13-v7+",
+        "system": "Linux",
+        "version": "#894 SMP Mon Jun 13 13:13:27 BST 2016"
+    },
+    "temperature": "47.8",
+    "temperatureF": "118.0",
+    "uptime": "6 days, 6 hours, 7 minutes\n"
+}
+```
+
+You can get this information by looking at the [firebase console](https://console.firebase.google.com) or by using the `dumpStats.py` script.
+
 If you are interested in temperature specifically, you should also check out my  [pi-temperature-firebase](https://github.com/mrnohr/pi-temperature-firebase) project to track the temperature of your raspberry pi over time.
 
 While this was initially intended to only work on a raspberry pi, it is possible that it could work on any linux-based system. I have tried it on a Apple computer, which mostly worked.
@@ -18,7 +43,7 @@ You will need to copy the `config.json.example` to your home directory (`~/`), r
 
 ### Cron Scheduling
 
-You also need to set up the scripts to run on a regular basis. To do this, you should use `crontab`.
+You also need to set up the script to run on a regular basis. To do this, you should use `crontab`.
 
 1. On the pi, enter `crontab -e`
 2. Use the following cron settings, or adjust to report as frequently as you want.
@@ -31,7 +56,7 @@ Make sure the paths defined point to your scripts.
 
 ## Firebase
 
-To use this you will need to setup a Firebase project. In the code the `pi-temperature-c369d` is a sample project I used for testing.
+To use this you will need to setup a Firebase project. In the code the `pi-monitor-c369d` is a sample project I used for testing.
 
 ### Firebase Auth
 
